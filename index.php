@@ -1,5 +1,6 @@
 <?php
 require_once "head.php";
+require_once "commonvars.php";
 ?>
 
 <!--NAVIGATION-->
@@ -15,5 +16,7 @@ require_once "head.php";
 </nav>
 
 <section id="Wishlist">
-
+<?php
+    $db = new PDO($databaseConnection);
+    ?>
 </section>
