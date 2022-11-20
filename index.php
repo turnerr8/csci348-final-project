@@ -9,8 +9,8 @@ require_once "commonvars.php";
         <a href="#">Home</a>
         <a href="#">Wishlist</a>
         <a href="#">Secret Santa</a>
-        <a href="#">Log In</a>
-        <a href="#">Sign Up</a>
+        <a href="signin.php">Log In</a>
+        <a href="register.php">Sign Up</a>
     
     </nav>
 
