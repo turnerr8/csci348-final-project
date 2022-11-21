@@ -1,6 +1,12 @@
+<?php
+session_start ();
+require 'head.php';
+require 'commonvars.php';
+?>
 <!--ADD AN ITEM TO THE WISHLIST FORM-->
 
 <section id="Wishlist">
+
         <form id="wishlist-adder">
             <label for="itemName">Item:</label>
             <input type="text" name="itemName" id="itemName">
@@ -14,9 +20,21 @@
         <script>
             //READ
             //https://code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59
-            $('#Wishlist').submit(function(){
+            $( "form" ).on( "submit", function(e){
                 console.log("submit");
-                var postData = $('#Wishlist').serialize();
+                var postData = $(this).serialize();
+                
+                $.ajax({
+                    type: "POST",
+                    url: "wishlist-add.php",
+                    data: postData,
+                    success: function () {
+                        console.log("added successfully");
+                        
+                    }
+                });
+                e.preventDefault();
+
                 $.post('wishlist-add.php', postData, function(data) {
                     console.log("added");
                 });
@@ -26,7 +44,15 @@
 
     <!-- CONNECT TO DATABASE-->
     <?php
-        $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+        //$db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+        try
+        {
+            $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+        }
+        catch (PDOException $e)
+        {
+            exit('Error: could not establish database connection');
+        }
 
 
         echo "<h1>Wish List </h1>";

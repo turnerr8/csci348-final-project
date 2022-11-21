@@ -5,6 +5,7 @@
     if(isset($_POST['itemName'])) {
         $itemName =$_POST['itemName'];
     }
+    
     if(isset($_POST['itemLink'])) {
         $itemLink = $_POST['itemLink'];
     }
