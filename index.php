@@ -8,7 +8,7 @@ require_once "commonvars.php";
         <!--logo-->
         <a href="#">Home</a>
         <a href="#">Wishlist</a>
-        <a href="#">Secret Santa</a>
+        <a href="santa.php">Secret Santa</a>
         <a href="signin.php">Log In</a>
         <a href="register.php">Sign Up</a>
     
