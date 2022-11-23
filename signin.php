@@ -14,7 +14,7 @@ include 'head.php';
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="">Wishlist</a></li>
-                <li><a href="">Secret Santa</a></li>
+                <li><a href="santa.php">Secret Santa</a></li>
             </ul>
         </nav>
 
