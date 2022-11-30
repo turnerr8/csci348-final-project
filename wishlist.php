@@ -49,11 +49,13 @@ require_once 'nav.php';
         <?php
         foreach($rows as $row){
             ?>
-            <tr>
-                <td><?=$row['firstName']?></td>
-                <td><?=$row['lastName']?></td>
-                <td><?=$row['itemName']?></td>
-                <td><a href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
+            <tr id="<?=$itemName?>">
+                <td class="fName"><?=$row['firstName']?></td>
+                <td class="lName"><?=$row['lastName']?></td>
+                <td class="itemName"><?=$row['itemName']?></td>
+                <td class="itemLink"><a href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
+                <td><button class="delete">DELETE</button></td>
+                <td><button class="buy">BUY</button></td>
             </tr>
             <?php
         }
