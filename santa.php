@@ -38,14 +38,23 @@ require_once "commonvars.php";
     ?>
 
     <!-- 2. Button to Join -->
-    <button type="button">JOIN</button>
+    <button type="button" onClick="joinGroup(); this.style.display = 'none'">JOIN</button>
+
+    <div id="joinButton" style="display:none">
+        <form action="joinLanding.php" method="post">
+            <label for="groupID">Secret Santa Group Code:</label>
+            <input type ="text" id="groupID" name="groupID"><br><br>
+
+            <button type="submit" name="submit">Enter Group</button>
+        </form>
+    </div>
+
+
+<!-- 
     TODO:
             - PROMPT USER TO ENTER GROUP ID
             - CHECK DATABASE IF GROUP ID EXISTS
-            - IF SO, REDIRECT TO THE LANDING PAGE
-
-
-
+            - IF SO, REDIRECT TO THE LANDING PAGE -->
 
 
     <script>
@@ -55,6 +64,7 @@ require_once "commonvars.php";
         }
         function joinGroup() {
             // TODO: prompt participant for groupID
+            document.getElementById('joinButton').style.display='block';
         }
     </script>
 
