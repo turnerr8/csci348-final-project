@@ -15,10 +15,10 @@ include 'head.php';
     </ul>
 </nav>
 
-<div class="side-nav">
+<nav class="side-nav">
     <ul>
         <li class="item1"><a href="signin.php">Sign In</a></li>
         <li class="item2"><a href="register.php">Sign Up</a></li>
     </ul>
 
-</div>
+</nav>

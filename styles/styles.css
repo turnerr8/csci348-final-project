@@ -6,7 +6,7 @@
 
 body  {
     width: 100%;
-    padding: 20px;
+    /* padding: 20px; */
     height: 100vh;
 }
 td{
@@ -40,38 +40,27 @@ section {
 .main-content {grid-area: main;}
 .footer {grid-area: footer;}
 
+
 /* wrapper sets up grid using names created above */
-/* layout 1 */
-.wrapper {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 100px auto 100px;
-    grid-template-areas:
-        "logo navbar sidenav"
-        "sidebar main main"
-        "footer footer footer";
-    
-}
 /* layout 2 */
 .wrapper1 {
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 100px auto 100px;
+    grid-template-columns:300px 1fr 300px;
+    grid-template-rows: 150px 50em 100px;
     grid-template-areas:
         "logo navbar sidenav"
         "main main main"
-        "footer footer footer";
-    
+        "footer footer footer";   
 }
+
 
 
 
 /* format logo */
 .logo {
     text-align: left;
-    
+    padding: 20px;
     text-transform: uppercase;
     font-size: 2.3em;
     
@@ -79,22 +68,19 @@ section {
 
 /* formatting the nav bar */
 nav {
-   padding: 20px 10px;
-    
-    display: flex;
-    justify-content: space-around;
+    padding: 50px 0px;
+    text-align: center;
+    align-items: center;
 
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    
-    
+    justify-content: center;  
 }
 nav li {
     margin: 0px 20px;
-    
     justify-content: center;
     padding: 20px 50px;
 }
@@ -105,44 +91,30 @@ nav a {
    
 }
 nav li:hover {
-    background-color: grey;
+    background-color: whitesmoke;
+    border-radius: 5px;
 }
 
 /* formatting the side nav */
 
-.side-nav {
-    
-}
 
-.side-nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
-    padding-top: 35px;
-    
-}
 .side-nav li {
-    margin: 0px 20px;
-    border: 2px solid green;
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-}
-.side-nav a {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: black;
-    padding: 10px 0px;
-    
+    padding: 20px;
 }
 
 .side-nav .item1 {
     border: none;
+    border-radius: 5px;
 }
 .side-nav .item1:hover {
     
     background-color: pink;
 
+}
+
+.side-nav .item2 {
+    border: white solid 2px;
+    border-radius: 5px;
 }
 
 .side-nav .item2:hover {
@@ -151,8 +123,10 @@ nav li:hover {
 }
 
 
+/* 
+DELETE */
 /* sidebar */
-
+/* 
 .side-bar {
     background-color: lightcoral;
 }
@@ -174,18 +148,14 @@ nav li:hover {
     overflow: hidden;
     background-color: blue;
 }
-
-
-
-
-
+ */
 
 
 
 /*  main */
 
 .main-content {
-    background-color: grey;
+    
     padding: 40px;
     
 }
@@ -212,11 +182,26 @@ nav li:hover {
     margin: 50px 30%;
 }
 
-/* wishlist main  */
+/* index page  */
 
+.header-text{
+    color: green;
+    font-family: papyrus;
+    text-align: center;
+    font-size: 65px;
+    margin: 30px 100px;
+}
 
+.paragraph-text {
+    color: green;
+    font-family: papyrus;
+    text-align: center;
+    font-size: 50px ;
+}
 
-
+#index-design {
+    background-color: none;
+}
 
 
 
