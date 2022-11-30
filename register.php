@@ -19,9 +19,6 @@ include 'nav.php';
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" pattern="^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+.)+[a-z]{2,5}$" required><br><br>
 
-            <label for="email">Confirm your Email Address:</label>
-            <input type="email" id="email" name="emailagain" pattern="^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+.)+[a-z]{2,5}$"><br><br>
-
             <h3>Login Information</h3>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required><br><br>
