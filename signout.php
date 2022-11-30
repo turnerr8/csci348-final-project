@@ -1,6 +1,9 @@
 <?php
 session_start ();
 session_regenerate_id();
+include 'head.php';
+include 'commonvars.php';
+include 'nav.php';
 ?>
 
 <?php

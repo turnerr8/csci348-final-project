@@ -1,7 +1,10 @@
 <?php 
 include 'head.php';
+include 'commonvars.php';
+include 'nav.php';
 ?>
 <body>
+    <!-- TODO: CHANGE FORM ACTION -->
     <form action="verify.php" method="post">
         <fieldset>
             <legend>Sign Up</legend>
