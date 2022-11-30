@@ -37,17 +37,16 @@ include 'nav.php';
       <?php
       // TODO: RYAN NEEDS ^do i NEED to Madeline??^ TO STORE THESE VALUES IN USER TABLE
       try
-        {
-            $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
-        }
-        catch (PDOException $e)
-        {
-            exit('Error: could not establish database connection');
-        }
-
-        
+      {
+          $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+      }
+      catch (PDOException $e)
+      {
+          exit('Error: could not establish database connection');
+      }
+      
       $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
-        $db->query($sql);
+      $db->query($sql);
     }
   }
   ?>

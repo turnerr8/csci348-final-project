@@ -25,11 +25,23 @@ require_once "commonvars.php";
             $priceRange = $_REQUEST["priceRange"];
             $date = $_REQUEST["date"];
             $groupId = getCode();
-            // RYAN CAN YOU PLEASE PUT THESE IN THE DATABASE
+
             echo $groupName . "<br>";
             echo $priceRange . "<br>";
             echo $date . "<br>";
             echo $groupId;
+
+            try
+            {
+                $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+            }
+            catch (PDOException $e)
+            {
+                exit('Error: could not establish database connection');
+            }
+            // TODO: WE NEED TO GRAB organizerId AND STORE IT IN VARIABLE SO WE CAN INSERT IT INTO DATABASE
+            $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupID, groupName, date, organizerId, generated) VALUES ('$groupID', '$groupName', '$date', '$organizerId', '1');";
+            $db->query($sql);
         }
     ?>
 </body>
