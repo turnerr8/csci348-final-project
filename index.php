@@ -1,18 +1,15 @@
 <?php
-require_once "head.php";
+include "head.php";
+include "nav.php";
 require_once "commonvars.php";
 ?>
-<body>
-    <!--NAVIGATION-->
-    <nav>
-        <!--logo-->
-        <a href="#">Home</a>
-        <a href="#">Wishlist</a>
-        <a href="santa.php">Secret Santa</a>
-        <a href="signin.php">Log In</a>
-        <a href="register.php">Sign Up</a>
-    
-    </nav>
 
-    
+<body>
+    <style>
+        body{
+            background-image: url();
+        }
+     </style>
+
 </body>
+
