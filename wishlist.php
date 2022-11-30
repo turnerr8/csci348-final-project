@@ -2,6 +2,7 @@
 session_start ();
 require 'head.php';
 require 'commonvars.php';
+require_once 'nav.php';
 ?>
 <!--ADD AN ITEM TO THE WISHLIST FORM-->
 
@@ -17,39 +18,14 @@ require 'commonvars.php';
             <input type="submit" value="add" name="submit" id="submit">
         </form>
 
-        <script>
-            $(document).ready(function (){
-
-                $( "form" ).on( "submit", function(e){
-                    //e.preventDefault();
-                    console.log("submit");
-                    var postData = $(this).serialize();
-
-                    $.ajax({
-                        
-                        url: "wishlist-add.php",
-                        method: "POST",
-                        data: postData,
-
-                        success: function (data) {
-                            console.log("added successfully");
-                            console.log(data);
-                            window.location.reload();
-                            
-                        }
-                    });
-                });
-            });
-            //READ
-            //https://code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59
-            
-                
-        </script>
+        
 
 
     <!-- CONNECT TO DATABASE-->
     <?php
-        //$db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+        //turn this into sessions
+        $fName = "Ryan";
+        $lName="Turner";
         try
         {
             $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
@@ -63,7 +39,7 @@ require 'commonvars.php';
         echo "<h1>Wish List </h1>";
         $rows = $db->query("SELECT * FROM WishList JOIN Users ON (WishList.userId = Users.userId);");?>
         <!--ADD ROWS OF WISHLIST-->
-        <table>
+        <table id="wishlist-table">
             <tr>
                 <td>First</td>
                 <td>Last</td>
@@ -77,11 +53,68 @@ require 'commonvars.php';
                 <td><?=$row['firstName']?></td>
                 <td><?=$row['lastName']?></td>
                 <td><?=$row['itemName']?></td>
-                <td><a href= <?=$row['itemLink']?>><?=$row['itemName']?></a></td>
+                <td><a href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
             </tr>
             <?php
         }
         
         ?>
         </table>
+
+        <script>
+            $(document).ready(function (){
+
+                $( "form" ).on( "submit", function(e){
+                    e.preventDefault();
+                    console.log("submit");
+                    var postData = $(this).serialize();
+
+                    $.ajax({
+                        
+                        url: "wishlist-add.php",
+                        method: "POST",
+                        data: postData,
+
+                        success: function (data) {
+                            console.log("added successfully");
+                            console.log(data);
+
+                            //insert a row first
+                            let table = document.getElementById("wishlist-table");
+                            let row = table.insertRow(1);
+                            let cell0 = row.insertCell(0);
+                            let cell1 = row.insertCell(1);
+                            let cell2 = row.insertCell(2);
+                            let cell3 = row.insertCell(3);
+
+                            //add html
+                            cell0.innerHTML= "<?=$fName?>";
+                            cell1.innerHTML = "<?=$lName?>";
+
+                            //get item
+                            var item = document.getElementById( "itemName" ).value;
+                            var link = document.getElementById( "itemLink" ).value;
+                            console.log(item);
+                            console.log(link);
+                            cell2.innerHTML = item;
+                            cell3.innerHTML =`<a href='${link}'>${item}</a>`;
+
+
+
+                            //location.reload();
+                            $
+
+                            
+                        }
+                    });
+                });
+                
+            });
+            
+            
+                
+        </script>
     </section>
+    <?php
+    require "footer.php";
+    ?>
