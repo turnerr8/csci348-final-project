@@ -18,27 +18,32 @@ require 'commonvars.php';
         </form>
 
         <script>
-            //READ
-            //https://code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59
-            $( "form" ).on( "submit", function(e){
-                console.log("submit");
-                var postData = $(this).serialize();
-                
-                $.ajax({
-                    type: "POST",
-                    url: "wishlist-add.php",
-                    data: postData,
-                    success: function () {
-                        console.log("added successfully");
-                        
-                    }
-                });
-                e.preventDefault();
+            $(document).ready(function (){
 
-                $.post('wishlist-add.php', postData, function(data) {
-                    console.log("added");
+                $( "form" ).on( "submit", function(e){
+                    //e.preventDefault();
+                    console.log("submit");
+                    var postData = $(this).serialize();
+
+                    $.ajax({
+                        
+                        url: "wishlist-add.php",
+                        method: "POST",
+                        data: postData,
+
+                        success: function (data) {
+                            console.log("added successfully");
+                            console.log(data);
+                            window.location.reload();
+                            
+                        }
+                    });
                 });
             });
+            //READ
+            //https://code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59
+            
+                
         </script>
 
 
@@ -72,7 +77,7 @@ require 'commonvars.php';
                 <td><?=$row['firstName']?></td>
                 <td><?=$row['lastName']?></td>
                 <td><?=$row['itemName']?></td>
-                <td><a href=<?=$row['itemLink']?>><?=$row['itemName']?></a></td>
+                <td><a href= <?=$row['itemLink']?>><?=$row['itemName']?></a></td>
             </tr>
             <?php
         }
