@@ -21,7 +21,7 @@ include 'head.php';
         <div class="side-nav">
             <ul>
                 <li class="item1"><a href="signin.php">Sign In</a></li>
-                <li class="item2"><a href="">Sign Up</a></li>
+                <li class="item2"><a href="register.php">Sign Up</a></li>
             </ul>
 
         </div>
