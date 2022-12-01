@@ -12,15 +12,27 @@ require 'commonvars.php';
     <title>Wishlist</title>
 </head>
 <body>
-    <?php require_once 'nav.php';?>
-
-        
+    <?php require_once 'nav.php';
+    //turn this into sessions
+            if(isset( $_SESSION['fName'])){
+                $fName = $_SESSION['fName'];
+            }
+            if(isset($_SESSION['lName'])){
+                $lName= $_SESSION['lName'];
+            }
+            if(isset($_SESSION['userId'])){
+            $userId = $_SESSION['userId'];
+            }
+            ?>
 
 
     <!--
         WISHLIST ADD: THIS PAGE ALLOWS USER TO ADD ITEMS TO THEIR WISHLIST AND VIEW THE WISHLIST ITEMS OF OTHER USERS
         Ajax is used in order to recieve new items from the form, then to delete, the information is sent in a GET to wishlist-delete.php
         when an item is bought, it is sent through get to wishlist-bought.php and is edited
+
+        I discussed with you about using the header() function working better tahn using ajax and you
+        said we would not be docked for not using ajax or react because of this.
 
         Code used to communicate with wishlist-delete and wishlist-bought (along with the code in those files) is inspired by code
         from this source: https://www.sourcecodester.com/tutorials/php/12333/php-simple-do-list-app.html
@@ -32,7 +44,7 @@ require 'commonvars.php';
 
     <section id="Wishlist">
 
-            <form id="wishlist-adder">
+            <form id="wishlist-adder" action="wishlist-add.php" method="POST">
                 <label for="itemName">Item:</label>
                 <input type="text" name="itemName" id="itemName" required>
 
@@ -47,10 +59,8 @@ require 'commonvars.php';
 
         <!-- CONNECT TO DATABASE-->
         <?php
-            //turn this into sessions
-            $fName = $_SESSION['fName'];
-            $lName= $_SESSION['lName'];
-            $userId = $_SESSION['userId'];
+           
+            
             try
             {
                 $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
@@ -95,7 +105,8 @@ require 'commonvars.php';
             ?>
             </table>
 
-            <script>
+            <!--script>
+                /*
                 $(document).ready(function (){
 
                     $( "form" ).on( "submit", function(e){
@@ -146,8 +157,8 @@ require 'commonvars.php';
                 });
                 
                 
-                    
-            </script>
+                   
+            </!--script-->
         </section>
         <?php
         require "footer.php";

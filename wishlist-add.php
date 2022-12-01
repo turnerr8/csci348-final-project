@@ -1,4 +1,29 @@
 <?php
+session_start();
+include 'commonvars.php';
+
+$db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+
+if($_POST['itemName']){
+    $itemName = $_POST['itemName'];
+}
+if($_POST['itemLink']) {
+    $itemLink = $_POST['itemLink'];
+}
+
+$userId = $_SESSION['userId'];
+
+
+
+$sql = "INSERT INTO turnerr8_final_project.WishList (userId, itemName, itemLink, hasBeenBought, boughtByUserId) VALUES ('$userId', '$itemName', '$itemLink', NULL, NULL);";
+$db->query($sql);
+header("location: wishlist.php");
+
+
+?>
+
+
+<!--?php
     include 'commonvars.php';
 
     $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
@@ -25,4 +50,4 @@
     $db->query($sql);
 
 
-?>
+?-->
