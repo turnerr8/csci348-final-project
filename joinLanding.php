@@ -28,23 +28,37 @@ Which person the user should buy for -->
             // $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
             // $db->query($sql);
 
-            $sql = "SELECT count(groupID) FROM SecretSantaUser";
+            $sql = "SELECT count(groupID) FROM SecretSantaUser;";
             $doesGroupIDExist = $db->query($sql);
 
             if($doesGroupIDExist <= 0) {
                 echo "Please enter valid secret santa group code";
             }
             else{
-                $sql = "SELECT groupName FROM SecretSantaGroup WHERE groupID=$groupID";
-                $groupName = $db->query($sql);
-    
-                $sql = "SELECT priceRange FROM SecretSantaGroup WHERE groupID=$groupID";
-                $price = $db->query($sql);
-    
-                $sql = "SELECT date FROM SecretSantaGroup WHERE groupID=$groupID";
-                $date = $db->query($sql);
 
-                echo "Welcome to the $groupname Secret Santa";
+                $sql = "SELECT * FROM SecretSantaUser;";
+                $groupInfo = $db->query($sql);
+
+                $groupName = 0;
+                $price = 0;
+                $date = 0;
+
+                foreach($groupInfo as $groupID){
+                    $groupName = $groupID["groupName"];
+                    $price= $groupID["priceRange"];
+                    $date = $groupID["eventDate"];
+                }
+
+                // $sql = "SELECT groupName FROM SecretSantaGroup WHERE groupID=$groupID";
+                // $groupName = $db->query($sql);
+    
+                // $sql = "SELECT priceRange FROM SecretSantaGroup WHERE groupID=$groupID";
+                // $price = $db->query($sql);
+    
+                // $sql = "SELECT eventDate FROM SecretSantaGroup WHERE groupID=$groupID";
+                // $date = $db->query($sql);
+
+                echo "Welcome to the $groupName Secret Santa";
                 echo "<br><br>";
                 echo "This secret santa event ends on $date";
                 echo "<br><br>";
