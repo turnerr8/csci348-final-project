@@ -4,6 +4,18 @@ require 'head.php';
 require 'commonvars.php';
 require_once 'nav.php';
 ?>
+
+<!--
+    WISHLIST ADD: THIS PAGE ALLOWS USER TO ADD ITEMS TO THEIR WISHLIST AND VIEW THE WISHLIST ITEMS OF OTHER USERS
+    Ajax is used in order to recieve new items from the form, then to delete, the information is sent in a GET to wishlist-delete.php
+    when an item is bought, it is sent through get to wishlist-bought.php and is edited
+
+    Code used to communicate with wishlist-delete and wishlist-bought (along with the code in those files) is inspired by code
+    from this source: https://www.sourcecodester.com/tutorials/php/12333/php-simple-do-list-app.html
+-->
+
+
+
 <!--ADD AN ITEM TO THE WISHLIST FORM-->
 
 <section id="Wishlist">
@@ -26,6 +38,7 @@ require_once 'nav.php';
         //turn this into sessions
         $fName = "Ryan";
         $lName="Turner";
+        $userId = 1;
         try
         {
             $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
@@ -49,13 +62,20 @@ require_once 'nav.php';
         <?php
         foreach($rows as $row){
             ?>
-            <tr id="<?=$itemName?>">
+            <tr data-giftId="<?=$row['itemId']?>"
+            <?php
+                //test whether isbought is true, if so add bought class to the tr which will grey out row
+                if($row['hasBeenBought']==1){
+                    echo "class='bought'";
+                }
+            ?>
+            >
                 <td class="fName"><?=$row['firstName']?></td>
                 <td class="lName"><?=$row['lastName']?></td>
                 <td class="itemName"><?=$row['itemName']?></td>
                 <td class="itemLink"><a href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
-                <td><button class="delete">DELETE</button></td>
-                <td><button class="buy">BUY</button></td>
+                <td><a href="wishlist-delete.php?itemId=<?php echo $row['itemId']?>" class="delete">Delete</a></td>
+                <td><a href="wishlist-buy.php?itemId=<?php echo $row['itemId']?>&boughtBy=<?php echo $userId?>">Buy</a></td>
             </tr>
             <?php
         }
