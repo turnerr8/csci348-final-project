@@ -5,6 +5,7 @@ require_once "commonvars.php";
 ?>
 
 <!-- TODO: WE NEED TO GET THE USER'S ID SO THAT WE CAN CHECK WHETHER IT EXISTS IN THE SECRET SANTA GROUP TABLE AS AN ORGANIZER -->
+<!-- TODO: WE NEED TO MAKE IT SO THAT IF A USER CLICKS 'CREATE' THE JOIN OPTION HIDES -->
 <body>
 
     <!-- 1. Button to Create -->
@@ -31,7 +32,7 @@ require_once "commonvars.php";
                     <label for="date">Date of Secret Santa Event:</label>
                     <input type="date" id="date" name="date" min="1" max="100"><br><br>
                     
-                    <button type="submit" name="submit">Register Now</button>
+                    <button type="submit" name="submit">Create Group</button>
                 </form>
             </div>  
         <?php }

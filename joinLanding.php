@@ -28,10 +28,13 @@ Which person the user should buy for -->
             // $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
             // $db->query($sql);
 
-            $sql = "SELECT count(groupId) FROM SecretSantaUser;";
-            $doesGroupIDExist = $db->query($sql);
 
-            if($doesGroupIDExist <= 0) {
+            //change this it should be: if the groupID entered is in data base 
+            $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId = $groupID;";
+            $doesGroupIDExist = $db->query($sql);
+            $total = $doesGroupIDExist->rowCount();
+
+            if($total == 0) {
                 echo "Please enter valid secret santa group code";
             }
             else{
