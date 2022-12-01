@@ -8,19 +8,24 @@ require_once "commonvars.php";
 
     <style>
         .main-content{
-            background-image: url(santa3.jpeg);
+            background-image: url(images/home-background.jpg);
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center 40%;
+            
         }
     </style>
 
     <div class="main-content" id="index-design">
 
         
-        <h1 class="header-text"> WELCOME TO THE CHRISTMAS WEBSITE </h1>
-        <p class="paragraph-text">Use the links above to navigate to whishlists or secret santa </p>
+        <h1 class="header-text"> Welcome to Silent Elves</h1>
+        <p class="paragraph-text">We are your one-stop website for creating and sharing Christmas Wishlists as well as Secret Santa Groups </p>
             
-
+        <div id="home-links">
+            <button class="button1">Start My Wishlist</button>
+            <button class="button1">Create Secret Santa Group</button>
+        </div>
        
 
 
@@ -28,5 +33,9 @@ require_once "commonvars.php";
     </div>
 
 </body>
+
+<?php
+include "footer.php";
+?>
 
 
