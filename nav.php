@@ -16,6 +16,7 @@ include 'head.php';
 </nav>
 
 <nav class="side-nav">
+    <!--Add sessions of signed in signed out-->
     <ul>
         <li class="item1"><a href="signin.php">Sign In</a></li>
         <li class="item2"><a href="register.php">Sign Up</a></li>

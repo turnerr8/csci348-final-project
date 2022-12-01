@@ -1,0 +1,7 @@
+tr.bought {
+    text-decoration: line-through;
+}
+
+#Wishlist {
+    grid-column: 2/3;
+}

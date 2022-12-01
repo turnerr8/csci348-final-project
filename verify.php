@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include 'head.php';
 include 'commonvars.php';
 include 'nav.php';
@@ -47,6 +48,18 @@ include 'nav.php';
       
       $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
       $db->query($sql);
+      $querySQL = "SELECT * FROM turnerr8_final_project.Users WHERE email='$email'";
+      $rows = $db->query($querySQL);
+      $userId=0;
+      foreach($rows as $row){
+        $userId=$row['userId'];
+      }
+      //SESSIONS
+      $_SESSION['fName']=$fname;
+      $_SESSION['lName']=$lname;
+      $_SESSION['userId']=$userId;
+      echo $userId;
+
     }
   }
   ?>

@@ -218,3 +218,9 @@ DELETE */
     text-align: center;
     padding: 20px
 }
+
+/*wishlist*/
+
+tr.bought {
+    text-decoration: line-through;
+}
