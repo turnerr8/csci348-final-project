@@ -5,9 +5,9 @@ include 'head.php';
 <!--  nav-->   
 <div class="wrapper1">
 
-<header class ="logo"> Christmas Website </header>
+<header class ="logo"> Silent Elves </header>
 
-<nav clas ="navbar">
+<nav class ="navbar">
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="wishlist.php">Wishlist</a></li>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,:wght@700&family=Great+Vibes');
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,6 +11,9 @@ body  {
     width: 100%;
     /* padding: 20px; */
     height: 100vh;
+}
+p {
+    color: whitesmoke;
 }
 td{
     border: 1px solid black;
@@ -44,25 +50,30 @@ section {
 /* wrapper sets up grid using names created above */
 /* layout 2 */
 .wrapper1 {
+    background-color: #3A5557;
     display: grid;
-    gap: 20px;
+    gap: 0px;
     grid-template-columns:300px 1fr 300px;
-    grid-template-rows: 150px 50em 100px;
+    grid-template-rows: 150px 50em auto;
     grid-template-areas:
         "logo navbar sidenav"
         "main main main"
         "footer footer footer";   
 }
 
-
+#heading-section {}
 
 
 /* format logo */
 .logo {
     text-align: left;
     padding: 20px;
-    text-transform: uppercase;
-    font-size: 2.3em;
+    
+    font-size: 2.5em;
+    color: whitesmoke;
+    font-family: 'Great Vibes';
+ 
+    font-weight: 400;
     
 }
 
@@ -71,7 +82,7 @@ nav {
     padding: 50px 0px;
     text-align: center;
     align-items: center;
-
+    
 }
 
 nav ul {
@@ -87,11 +98,12 @@ nav li {
 nav a {
     text-transform: uppercase;
     text-decoration: none;
-    color: black;
+    color: whitesmoke;
+    
    
 }
 nav li:hover {
-    background-color: whitesmoke;
+    background-color: #0C3633;
     border-radius: 5px;
 }
 
@@ -100,25 +112,28 @@ nav li:hover {
 
 .side-nav li {
     padding: 20px;
+    
 }
 
 .side-nav .item1 {
     border: none;
     border-radius: 5px;
+    color: #0C3633;
 }
 .side-nav .item1:hover {
     
-    background-color: pink;
+    background-color: #0C3633;
 
 }
 
 .side-nav .item2 {
-    border: white solid 2px;
+    background-color: #0C3633;
     border-radius: 5px;
+    color: #3A5557
 }
 
 .side-nav .item2:hover {
-    background-color: green;
+    background-color: #63000c
 
 }
 
@@ -182,28 +197,49 @@ DELETE */
     margin: 50px 30%;
 }
 
+
+
 /* index page  */
 
 .header-text{
-    color: green;
-    font-family: papyrus;
+    color: whitesmoke;
+    
     text-align: center;
     font-size: 65px;
     margin: 30px 100px;
 }
 
 .paragraph-text {
-    color: green;
-    font-family: papyrus;
+    color: whitesmoke;
+    /* font-family: papyrus; */
     text-align: center;
-    font-size: 50px ;
+    font-size: 30px ;
+    padding: 0 400px;
 }
 
 #index-design {
     background-color: none;
 }
 
+#home-links{
+    text-align: center;
+    margin: 2em;
+}
+.button1 {
+    display: inline-block;
+    color: whitesmoke;
+    background-color: #63000c;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 20px;
+    width: 300px;
+    height: 100px;
+}
 
+.button1:hover {
+    background-color: #0C3633;
+}
 
 
 /* secret  santa main */
@@ -214,7 +250,7 @@ DELETE */
 
 /* footer */
 .footer {
-    background-color: darkgreen;
+    background-color: #0C3633;
     text-align: center;
     padding: 20px
 }
