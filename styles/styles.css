@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,:wght@700&family=Great+Vibes');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,:wght@700&family=Great+Vibes'); */
 
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 body  {
@@ -14,6 +15,7 @@ body  {
 }
 p {
     color: whitesmoke;
+    padding-top: 20px;
 }
 td{
     border: 1px solid black;
@@ -22,19 +24,28 @@ table {
     border-collapse: collapse;
 }
 
-/* nav {
-    width: 100%;
-    height: 3em;
-    background-color: lavender;
-    margin-bottom: 3em;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-} */
 
 section {
     margin: 2em;
     
+}
+
+.banner {
+    background-image: url(../images/home-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 65%;
+    height: 250px;
+    text-align: center;
+    padding: 0;
+}
+
+.banner h1 {
+    text-transform: uppercase;
+    color: #0C3633;
+    padding: 100px;
+    font-size: 3em;
+
 }
 
 
@@ -54,25 +65,24 @@ section {
     display: grid;
     gap: 0px;
     grid-template-columns:300px 1fr 300px;
-    grid-template-rows: 150px 50em auto;
+    grid-template-rows: 150px auto auto;
     grid-template-areas:
         "logo navbar sidenav"
         "main main main"
         "footer footer footer";   
 }
 
-#heading-section {}
 
 
 /* format logo */
 .logo {
     text-align: left;
     padding: 20px;
-    
-    font-size: 2.5em;
+    font-style: italic;
+    font-size: 3em;
     color: whitesmoke;
     font-family: 'Great Vibes';
- 
+    padding-top: 50px;
     font-weight: 400;
     
 }
@@ -180,22 +190,50 @@ DELETE */
     font-size: 2em;
     margin-bottom: 20px;
     text-align: center;
+    color: whitesmoke;
+    text-transform: uppercase;
 }
 
 .main-content input {
-    padding: 5px 20px;
+    padding: 15px 20px;
     border-radius: 5px;
     border: none;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+
 }
 
+.main-button {
+    background-color: #63000c;
+    text-align: center;
+    height: 50px;
+    width: 200px;
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-size: .7em;
+    border: none;
+    border-radius: 5px;
+    margin: 20px;
+}
 .main-content form {
-    border: 1px solid black;
+    border: none;
     padding: 30px;
+    background-color: #0C3633;
     border-radius: 5px;
     text-align: center;
     margin: 50px 30%;
+    color: whitesmoke;
+    font-size: 1.5em;
+    display: inline-block;
+    
 }
+
+.main-content label {
+    text-transform: uppercase;
+    padding: 20px;
+}
+
 
 
 

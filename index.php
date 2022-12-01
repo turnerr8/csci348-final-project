@@ -12,6 +12,7 @@ require_once "commonvars.php";
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center 40%;
+            height: 50em;
             
         }
     </style>

@@ -5,7 +5,19 @@ include 'nav.php';
 ?>
 
 <body>
+    <style>
+        .main-content{
+            padding:0;
+            
+        }
+    </style>
+
+
         <div class="main-content">
+
+            <div class="banner">
+                <h1>Sign in</h1>
+            </div>
             
             <?php
                 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true)
@@ -16,14 +28,14 @@ include 'nav.php';
                 }
                 else
                 {
-                    echo '<h3>Sign in</h3>';
+
                     echo '<form method="post" action="signedin.php">
                         <input type="hidden" name="activity" value="signin">
-                        <label>Username: <input type="text" name="user_name"></label>
+                        <label>Username <br><input type="text" name="user_name" placeholder="Enter your username..."></label>
                         <br>
-                        <label>Password: <input type="password" name="user_pass"></label>
+                        <label>Password <br> <input type="password" name="user_pass" placeholder="Enter your password..."></label>
                         <br>
-                        <input type="submit" value="Sign in" />
+                        <input class="main-button" "type="submit" value="Sign in" />
                         </form>';
                 }
 
@@ -32,15 +44,15 @@ include 'nav.php';
 
         </div>
 
-        <div class = "footer">
-            <?php
-            include 'footer.php';
-            ?>
-        </div>
+
+
+
     </div> 
 </body>
 
-
+<?php
+include "footer.php";
+?>
 
 
 
