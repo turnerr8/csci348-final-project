@@ -28,7 +28,7 @@ Which person the user should buy for -->
             // $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
             // $db->query($sql);
 
-            $sql = "SELECT count(groupID) FROM SecretSantaUser;";
+            $sql = "SELECT count(groupId) FROM SecretSantaUser;";
             $doesGroupIDExist = $db->query($sql);
 
             if($doesGroupIDExist <= 0) {
