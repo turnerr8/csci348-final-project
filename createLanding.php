@@ -42,12 +42,15 @@ require_once "commonvars.php";
                 exit('Error: could not establish database connection');
             }
             // TODO: WE NEED TO GRAB organizerId AND STORE IT IN VARIABLE SO WE CAN INSERT IT INTO DATABASE
-            $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (eventDate, generated, groupId, groupName, organizerId, priceRange) VALUES ('$date', 1, '$groupId', '$groupName', '$organizerId', '$priceRange');";
-            $db->exec($sql);
             
-            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (eventDate, generated, groupId, groupName, organizerId, priceRange) VALUES (?, ?, ?, ?, ?, ?)";
+            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (eventDate, generated, groupId, groupName, organizerId, priceRange) VALUES ('$date', 1, '$groupId', '$groupName', '$organizerId', '$priceRange');";
+            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupId, groupName, eventDate, priceRange, organizerId, generated) VALUES ('$groupId','$groupName', '$date', '$priceRange', '$organizerId', '1');";
             // $statement = $db->prepare($sql);
-            // $statement->execute([$date, 1, $groupId, $groupName, $organizerId, $priceRange]);
+            // $statement->execute($sql);
+            
+            $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupId, groupName, eventDate, priceRange, organizerId, generated) VALUES (?, ?, ?, ?, ?, ?)";
+            $statement = $db->prepare($sql);
+            $statement->execute([$groupId, $groupName, $date, $priceRange, $organizerId, '1']);
         }
     ?>
 </body>
