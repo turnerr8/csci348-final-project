@@ -36,13 +36,13 @@ Which person the user should buy for -->
             }
             else{
                 $sql = "SELECT groupName FROM SecretSantaGroup WHERE groupID=$groupID";
-                $groupName->query($sql);
+                $groupName = $db->query($sql);
     
                 $sql = "SELECT priceRange FROM SecretSantaGroup WHERE groupID=$groupID";
-                $price->query($sql);
+                $price = $db->query($sql);
     
                 $sql = "SELECT date FROM SecretSantaGroup WHERE groupID=$groupID";
-                $date->query($sql);
+                $date = $db->query($sql);
 
                 echo "Welcome to the $groupname Secret Santa";
                 echo "<br><br>";
