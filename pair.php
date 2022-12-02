@@ -4,8 +4,8 @@ include 'commonvars.php';
 $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
 $groupId;
 
-if($_GET['groupId']){
-    $groupId = $_GET['groupId'];
+if($_POST['groupId']){
+    $groupId = $_POST['groupId'];
 }
 
 
@@ -19,6 +19,11 @@ $i = 0;
 
 
 foreach($rows as $row){
+
+    if($row['organizerId']==$_SESSION['userId']) {
+        error();
+        break;
+    }
     $people[$i] = $row['userId'];
     $i++;
 }
@@ -37,8 +42,11 @@ for($j = 0; $j <= $i; $j++){
 
 //update hasBeen generated
 $sqlGenerated = "UPDATE SecretSantaGroup SET `generated` = '1' WHERE groupId = '$groupId'";
+echo "success";
 
-
+function error(){
+    echo "must be organizer to close group";
+}
 
 
 ?>
