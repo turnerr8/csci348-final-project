@@ -28,7 +28,7 @@ Which person the user should buy for -->
                 exit('Error: could not establish database connection');
             }
 
-            if(isset($_SESSION['groupId'])){
+            if(isset($_SESSION['userId'])){
                 //checks to see if that groupID user entered exits
                 $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
                 $doesGroupIDExist = $db->query($sql);
