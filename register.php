@@ -18,7 +18,7 @@ include 'nav.php';
             </div>
 
         <!-- TODO: CHANGE FORM ACTION -->
-        <form action="verify.php" method="post">
+        <form id="sign-up-form" action="verify.php" method="post">
             <fieldset>
                 <br><br>
                 <legend>Your Information</legend>

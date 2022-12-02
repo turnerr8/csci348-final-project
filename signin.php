@@ -29,13 +29,18 @@ include 'nav.php';
                 else
                 {
 
-                    echo '<form method="post" action="signedin.php">
-                        <input type="hidden" name="activity" value="signin">
-                        <label>Username <br><input type="text" name="user_name" placeholder="Enter your username..."></label>
-                        <br>
-                        <label>Password <br> <input type="password" name="user_pass" placeholder="Enter your password..."></label>
-                        <br>
-                        <input class="main-button" "type="submit" value="Sign in" />
+                    echo '<form id="sign-in-form" method="post" action="signedin.php">
+                        <fieldset>
+                            <legend>Sign In</legend>
+                            <input type="hidden" name="activity" value="signin">
+                            <label>Username</label> <br>
+                            <input type="text" name="user_name" placeholder="Enter your username...">
+                            <br>
+                            <label>Password</label> <br> 
+                            <input type="password" name="user_pass" placeholder="Enter your password...">
+                            <br>
+                            <input class="main-button" "type="submit" value="Sign in" />
+                        </fieldset>
                         </form>';
                 }
 
