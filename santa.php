@@ -12,6 +12,9 @@ require_once "commonvars.php";
             padding:0;
             
         }
+        p {
+            text-align:center;
+        }
     </style>
 
     <div class="main-content">
@@ -21,7 +24,7 @@ require_once "commonvars.php";
         </div>
 
         <h1>Welcome to our Secret Santa Feature! <br> You can create or join a Secret Santa Group.</h1>
-        <h2>When you want to close your group, Click close group!</h2>
+        <p>When you want to close your group, Click close group!</p>
 
         <div style="text-align:center; margin: 2em 20em;">
 
