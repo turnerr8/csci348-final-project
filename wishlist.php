@@ -47,6 +47,10 @@ require 'commonvars.php';
 
     <section id="Wishlist">
 
+            <!--IF NOT SIGNED IN YOU CAN ONLY VIEW WISHLIST-->
+            <? if(isset($_SESSION['userId'])){
+
+            ?>
             <form id="wishlist-adder" action="wishlist-add.php" method="POST">
                 <label for="itemName">Item:</label>
                 <input type="text" name="itemName" id="itemName" required placeholder="Item Name">
@@ -58,8 +62,15 @@ require 'commonvars.php';
 
                 <input type="submit" value="add" name="submit" id="submit">
             </form>
-
-            
+                <?php
+            } else {
+                ?>
+                    <div id="wishlist-adder">
+                        <p>You need to <a href="signin.php">Sign in</a> or <a href="register.php">Register</a> to add to the wishlist!</p>
+                    </div>
+                <?php
+            }
+            ?>
 
 
         <!-- CONNECT TO DATABASE-->
