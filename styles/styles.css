@@ -194,15 +194,7 @@ DELETE */
     text-transform: uppercase;
 }
 
-.main-content input {
-    padding: 15px 20px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 80%;
 
-}
 
 .main-button {
     background-color: #63000c;
@@ -230,6 +222,17 @@ DELETE */
     
     
 }
+
+.main-content input {
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+
+}
+
 
 .main-content label {
     text-transform: uppercase;

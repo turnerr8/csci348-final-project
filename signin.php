@@ -39,7 +39,7 @@ include 'nav.php';
                             <label>Password</label> <br> 
                             <input type="password" name="user_pass" placeholder="Enter your password...">
                             <br>
-                            <input class="main-button" "type="submit" value="Sign in" />
+                            <button class="main-button" "type="submit" value="Sign in"> Sign In </button>
                         </fieldset>
                         </form>';
                 }
