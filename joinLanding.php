@@ -28,10 +28,10 @@ Which person the user should buy for -->
                 exit('Error: could not establish database connection');
             }
 
-            // $sql = "INSERT INTO turnerr8_final_project.Users (username, password, email, firstName, lastName) VALUES ('$username', '$pw', '$email', '$fname', '$lname');";
+            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, groupName, eventDate, priceRange, organizerId, `generated`) VALUES ('$groupId','$groupName', '$date', '$priceRange', '$organizerId', '1');";
             // $db->query($sql);
  
-            $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId = $groupID;";
+            $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
             $doesGroupIDExist = $db->query($sql);
             $total = $doesGroupIDExist->rowCount();
 
