@@ -8,8 +8,27 @@ session_regenerate_id();
 include 'head.php';
 include 'commonvars.php';
 include 'nav.php';
+
+
 ?>
 
+<body>
+    <style>
+        .main-content{
+            padding:0;
+            
+        }
+    </style>
+
+
+        <div class="main-content">
+
+            <div class="banner">
+                
+            </div>
+
+
+    
 
 
         <?php
