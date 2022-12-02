@@ -10,48 +10,46 @@ require_once "commonvars.php";
 
     <!-- 1. Button to Create -->
 
-    <button type="button" onClick="createGroup(); this.style.display = 'none'">CREATE</button>
+    <button type="button" id="hideCreateButton" onClick="createGroup(); this.style.display = 'none'">CREATE</button>
     <?php 
         $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
     ?>
     <div id="createButton" style="display:none">
         <?php
+            // Check if the user is already an organizer
+            $organizerId = $_SESSION['userId'];
+            $sql = "SELECT organizerId FROM SecretSantaGroup WHERE organizerId LIKE $organizerId;";
+            $stmt = $db->query($sql);
+            $doesOrganizerExist = $stmt->rowCount();
+            if($doesOrganizerExist > 0) {
+                echo "You cannot organize two Secret Santa events.";
+            }
             // Check if the user is already in a group
-            if(isset($_SESSION['groupId'])){
+            else if(isset($_SESSION['groupId'])){
                 echo "You cannot participate in more than 1 Secret Santa events.";
             }
-            // Check if the user is already an organizer
             else {
-                $organizerId = $_SESSION['userId'];
-                $sql = "SELECT organizerId FROM SecretSantaGroup WHERE organizerId LIKE $organizerId;";
-                $stmt = $db->query($sql);
-                $doesOrganizerExist = $stmt->rowCount();
-                if($doesOrganizerExist > 0) {
-                    echo "You cannot organize two Secret Santa events.";
-                }
-                else {
-                    // User is not already in a group and has not already created a group
+                // User is not already in a group and has not already created a group
         ?> 
-                    <form action="createLanding.php" method="post">
-                        <label for="groupName">Group Name:</label>
-                        <input type="text" id="groupName" name="groupName"><br><br>
+                <form action="createLanding.php" method="post">
+                    <label for="groupName">Group Name:</label>
+                    <input type="text" id="groupName" name="groupName"><br><br>
 
-                        <label for="priceRange">Price Range ($1-$100):</label>
-                        <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
+                    <label for="priceRange">Price Range ($1-$100):</label>
+                    <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
 
-                        <label for="date">Date of Secret Santa Event:</label>
-                        <input type="date" id="date" name="date" min="1" max="100"><br><br>
-                        
-                        <button type="submit" name="submit">Create Group</button>
-                    </form>
-            <?php 
-                    } 
-                }
-            ?> 
+                    <label for="date">Date of Secret Santa Event:</label>
+                    <input type="date" id="date" name="date" min="1" max="100"><br><br>
+                    
+                    <button type="submit" name="submit">Create Group</button>
+                </form>
+        <?php 
+                } 
+        ?> 
     </div>  
 
     <!-- 2. Button to Join -->
-    <button type="button" onClick="joinGroup(); this.style.display = 'none'">JOIN</button>
+    <button type="button" id="hideJoinButton" onClick="joinGroup(); this.style.display = 'none'">JOIN</button>
 
     <div id="joinButton" style="display:none">
         <form action="joinLanding.php" method="post">
@@ -63,12 +61,12 @@ require_once "commonvars.php";
     </div>
 
     <!-- 3. Button for Closing Group  -->
-    <button type="button" onClick="closeGroup(); this.style.display = 'none'">CLOSE GROUP</button>
+    <button type="button" id="hideCloseButton" onClick="closeGroup(); this.style.display = 'none'">CLOSE GROUP</button>
 
     <div id="closeButton" style="display:none">
         <form action="pair.php" method="post">
             <label for="closeGroupID">Secret Santa Group Code:</label>
-            <input type ="text" id="closeGroupID" name="closeGroupID">Code of Group to Close: <br><br>
+            <input type ="text" id="closeGroupID" name="closeGroupID"><br><br>
 
             <button type="submit" name="submit">Close Group</button>
         </form>
@@ -78,14 +76,20 @@ require_once "commonvars.php";
         function createGroup() {
             // display questions for organizer to answer
             document.getElementById('createButton').style.display='block';
+            document.getElementById('hideJoinButton').style.display='none';
+            document.getElementById('hideCloseButton').style.display='none';
         }
         function joinGroup() {
             // TODO: prompt participant for groupID
             document.getElementById('joinButton').style.display='block';
+            document.getElementById('hideCreateButton').style.display='none';
+            document.getElementById('hideCloseButton').style.display='none';
         }
 
         function closeGroup() {
-
+            document.getElementById('closeButton').style.display='block';
+            document.getElementById('hideCreateButton').style.display='none';
+            document.getElementById('hideJoinButton').style.display='none';
         }
     </script>
 
