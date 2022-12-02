@@ -5,14 +5,6 @@ include "nav.php";
 require_once "commonvars.php";
 ?>
 <body>
-
-<!-- TODO:
-- DISPLAY 
-Group name
-Price range
-Countdown to day of event
-Which person the user should buy for -->
-
     <?php 
         if(isset($_POST["submit"])) {
             $groupID = $_REQUEST["groupID"];
@@ -51,7 +43,7 @@ Which person the user should buy for -->
                         $groupName = $groupID["groupName"];
                         $price= $groupID["priceRange"];
                         $date = $groupID["eventDate"];
-                        $groupGenerated =  $groupID['`generated`'];
+                        $groupGenerated =  $groupID["generated"];
                     }
 
                     ?>
@@ -86,26 +78,28 @@ Which person the user should buy for -->
 
                    }
                     ?>
-
-
                     </div>
-
                     <?php
-
                 }
             }
             else{
-                //secret santa pairing
-               
-    
-                //inserting into database
-                $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
-                $db->query($sql);
+                // Check if user is in group already
+                $sql = "SELECT groupId FROM SecretSantaUser WHERE userId = $userID;";
+                $stmt = $db->query($sql);
+                $isUserInGroup = $stmt->rowCount();
+                if($isUserInGroup > 0) {
+                    echo "You cannot participate in multiple Secret Santa events.";
+                }
+                else {
+                    //inserting into database
+                    $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
+                    $db->query($sql);
 
-                $_SESSION['groupId']=$groupID;
+                    $_SESSION['groupId']=$groupID;
 
-                echo "You have joined a group to view it click the join button again";
-
+                    echo "You have successfully joined a Secret Santa group! Please click 'Secret Santa' and 'Join' to view the landing page.";
+                }
+                
 
             }
 
