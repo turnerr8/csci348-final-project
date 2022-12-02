@@ -20,7 +20,7 @@ $i = 0;
 
 foreach($rows as $row){
 
-    if($row['organizerId']==$_SESSION['userId']) {
+    if($row['organizerId']!=$_SESSION['userId']) {
         error();
         break;
     }
@@ -42,10 +42,10 @@ for($j = 0; $j <= $i; $j++){
 
 //update hasBeen generated
 $sqlGenerated = "UPDATE SecretSantaGroup SET `generated` = '1' WHERE groupId = '$groupId'";
-echo "success";
+echo "Your group has successfully been closed.";
 
 function error(){
-    echo "must be organizer to close group";
+    echo "You must be the organizer to close this Secret Santa group.";
 }
 
 
