@@ -132,7 +132,7 @@ require 'commonvars.php';
 
                 <?php
                 echo "<h1>Wish List </h1>";
-                $rows = $db->query("SELECT * FROM WishList JOIN Users ON (WishList.userId = Users.userId);");?>
+                $rows = $db->query("SELECT * FROM WishList JOIN Users ON (WishList.userId = Users.userId) ORDER BY WishList.userId;");?>
                 <!--ADD ROWS OF WISHLIST-->
                 
                 <?php

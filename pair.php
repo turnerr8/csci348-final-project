@@ -9,7 +9,7 @@ if($_POST['groupId']){
 }
 
 
-$sql = "SELECT * FROM SecretSantaGroup JOIN SecretSantaUser ON (SecretSantaGroup.groupId = SecretSantaUser.groupId) WHERE groupId LIKE '$groupId'";
+$sql = "SELECT * FROM SecretSantaGroup JOIN SecretSantaUser ON (SecretSantaGroup.groupId = SecretSantaUser.groupId) WHERE groupId LIKE '$groupId';";
 
 $rows = $db->query($sql);
 
@@ -35,13 +35,13 @@ for($j = 0; $j <= $i; $j++){
     } else {
         $myPerson = $people[0];
     }
-    $sqlModify = "UPDATE SecretSantaUser SET whoIHave = '$myPerson' WHERE userId = '$me'";
+    $sqlModify = "UPDATE SecretSantaUser SET whoIHave = '$myPerson' WHERE userId = '$me';";
     $db->query($sqlModify);
 
 }
 
 //update hasBeen generated
-$sqlGenerated = "UPDATE SecretSantaGroup SET `generated` = '1' WHERE groupId = '$groupId'";
+$sqlGenerated = "UPDATE SecretSantaGroup SET `generated` = '1' WHERE groupId = '$groupId';";
 echo "Your group has successfully been closed.";
 
 function error(){
