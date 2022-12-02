@@ -62,6 +62,18 @@ require_once "commonvars.php";
         </form>
     </div>
 
+    <!-- 3. Button for Closing Group  -->
+    <button type="button" onClick="closeGroup(); this.style.display = 'none'">CLOSE GROUP</button>
+
+    <div id="closeButton" style="display:none">
+        <form action="pair.php" method="post">
+            <label for="closeGroupID">Secret Santa Group Code:</label>
+            <input type ="text" id="closeGroupID" name="closeGroupID">Code of Group to Close: <br><br>
+
+            <button type="submit" name="submit">Close Group</button>
+        </form>
+    </div>
+
     <script>
         function createGroup() {
             // display questions for organizer to answer
@@ -72,7 +84,7 @@ require_once "commonvars.php";
             document.getElementById('joinButton').style.display='block';
         }
 
-        function hideButton() {
+        function closeGroup() {
 
         }
     </script>
