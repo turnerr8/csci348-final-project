@@ -20,6 +20,9 @@ require_once "commonvars.php";
             
         </div>
 
+        <h1>Welcome to our Secret Santa Feature! <br> You can create or join a Secret Santa Group.</h1>
+        <h2>When you want to close your group, Click close group!</h2>
+
         <div style="text-align:center; margin: 2em 20em;">
 
 
@@ -116,10 +119,18 @@ require_once "commonvars.php";
 
             
         </div>
+    
+    
+    
+    
     </div>
-</body>
-
-<?php 
+    <?php 
 include "footer.php";
 ?>
+
+</body>
+
+
+
+
 
