@@ -16,33 +16,38 @@ require_once "commonvars.php";
     ?>
     <div id="createButton" style="display:none">
         <?php
-            if(isset($_SESSION['userId'])){
-                $organizerId = $_SESSION['userId'];
+            // Check if the user is already in a group
+            if(isset($_SESSION['groupId'])){
+                echo "You cannot participate in more than 1 Secret Santa events.";
             }
-
-            $sql = "SELECT COUNT($organizerId) FROM SecretSantaGroup";
-            $stmt = $db->query($sql);
-            $doesOrganizerExist = $stmt->rowCount();
-            if($doesOrganizerExist > 0) {
-                echo "You cannot organize two Secret Santa events.";
-            }
+            // Check if the user is already an organizer
             else {
-        ?>
-            <form action="createLanding.php" method="post">
-                <label for="groupName">Group Name:</label>
-                <input type="text" id="groupName" name="groupName"><br><br>
+                $organizerId = $_SESSION['userId'];
+                $sql = "SELECT organizerId FROM SecretSantaGroup WHERE organizerId LIKE $organizerId;";
+                $stmt = $db->query($sql);
+                $doesOrganizerExist = $stmt->rowCount();
+                if($doesOrganizerExist > 0) {
+                    echo "You cannot organize two Secret Santa events.";
+                }
+                else {
+                    // User is not already in a group and has not already created a group
+        ?> 
+                    <form action="createLanding.php" method="post">
+                        <label for="groupName">Group Name:</label>
+                        <input type="text" id="groupName" name="groupName"><br><br>
 
-                <label for="priceRange">Price Range ($1-$100):</label>
-                <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
+                        <label for="priceRange">Price Range ($1-$100):</label>
+                        <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
 
-                <label for="date">Date of Secret Santa Event:</label>
-                <input type="date" id="date" name="date" min="1" max="100"><br><br>
-                
-                <button type="submit" name="submit">Create Group</button>
-            </form>
-        <?php 
-                } 
-        ?>
+                        <label for="date">Date of Secret Santa Event:</label>
+                        <input type="date" id="date" name="date" min="1" max="100"><br><br>
+                        
+                        <button type="submit" name="submit">Create Group</button>
+                    </form>
+            <?php 
+                    } 
+                }
+            ?> 
     </div>  
 
     <!-- 2. Button to Join -->
@@ -65,6 +70,10 @@ require_once "commonvars.php";
         function joinGroup() {
             // TODO: prompt participant for groupID
             document.getElementById('joinButton').style.display='block';
+        }
+
+        function hideButton() {
+
         }
     </script>
 

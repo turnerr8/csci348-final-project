@@ -153,6 +153,14 @@ nav li:hover {
     background-color: #63000c
 
 }
+.side-nav .item3 {
+    border: none;
+    border-radius: 5px;
+    color: #0C3633;
+}
+.side-nav .item3:hover {
+    background-color: #3A5557;
+}
 
 
 /* 

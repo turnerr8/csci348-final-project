@@ -26,14 +26,10 @@ require_once "commonvars.php";
             $priceRange = $_REQUEST["priceRange"];
             $date = $_REQUEST["date"];
             $groupId = getCode();
+            $_SESSION['groupId']=$groupId;
             if(isset($_SESSION['userId'])){
                 $organizerId = $_SESSION['userId'];
             }
-
-            echo $groupName . "<br>";
-            echo $priceRange . "<br>";
-            echo $date . "<br>";
-            echo $groupId;
 
             try
             {
@@ -48,6 +44,11 @@ require_once "commonvars.php";
             $db->query($sql);
         }
     ?>
+    <h3>You have successfully created a Secret Santa group!</h3>
+    <h5>Your Group Name: </h5><em><?php echo $groupName ?></em>
+    <h5>Your Price Range: $0-$</h5><em><?php echo $priceRange ?></em>
+    <h5>Your Event will take place on: </h5><em><?php echo $date ?></em>
+    <h5>To invite friends to this Secret Santa group, provide your Group Code: </h5><em><strong><?php echo $groupId ?></strong></em>
 </body>
 
 <?php 

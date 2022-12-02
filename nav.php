@@ -32,7 +32,7 @@ include 'head.php';
     } else {
     ?>
     <ul>
-        <li class="item1"><?=$_SESSION["fName"]?></li>
+        <li class="item3"><?=$_SESSION["fName"]?></li>
         <li class="item2"><a href="signout.php">Sign Out</a></li>
     </ul>
     <?php

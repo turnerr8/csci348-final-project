@@ -28,52 +28,61 @@ Which person the user should buy for -->
                 exit('Error: could not establish database connection');
             }
 
-            $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
-            $db->query($sql);
- 
-            $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
-            $doesGroupIDExist = $db->query($sql);
-            $total = $doesGroupIDExist->rowCount();
+            if(isset($_SESSION['groupId'])){
+                //checks to see if that groupID user entered exits
+                $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
+                $doesGroupIDExist = $db->query($sql);
+                $total = $doesGroupIDExist->rowCount();
 
-            if($total == 0) {
-                echo "Please enter valid secret santa group code";
+                if($total == 0) {
+                    echo "Please enter valid secret santa group code";
+                }
+                else{
+
+                    $sql = "SELECT * FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
+                    $groupInfo = $db->query($sql);
+                    $rows = $groupInfo->rowCount();
+
+                    $groupName = 0;
+                    $price = 0;
+                    $date = 0;
+                    
+                    foreach($groupInfo as $groupID){
+                        $groupName = $groupID["groupName"];
+                        $price= $groupID["priceRange"];
+                        $date = $groupID["eventDate"];
+                    }
+
+                    ?>
+
+                    <!-- display all the information -->
+                    <div class="main-content">
+                        <div id="welcome-user">
+                            <p>Hello <?php echo "$userName";?>, Welcome back to</p>
+                            <br>
+                            <p> <?php echo "$groupName"; ?></p>
+                            <br>
+                            <br>
+                        </div>
+
+                        <div id="santa-info">
+                            <p>This secret santa group ends on <?php echo "$date"; ?> </p>
+                            <br><br>
+                            <p> The price range is <?php echo "$price"; ?> </p>
+                        </div>
+                    </div>
+
+                    <?php
+
+                }
             }
             else{
-
-                $sql = "SELECT * FROM SecretSantaGroup;";
-                $groupInfo = $db->query($sql);
-                $rows = $groupInfo->rowCount();
-
-                $groupName = 0;
-                $price = 0;
-                $date = 0;
-                
-                foreach($groupInfo as $groupID){
-                    $groupName = $groupID["groupName"];
-                    $price= $groupID["priceRange"];
-                    $date = $groupID["eventDate"];
-                }
-
-                ?>
-
-                <div class="main-content">
-                    <div id="welcome-user">
-                        <p>Hello <?php echo "$userName";?>, Welcome back to</p>
-                        <br>
-                        <p> <?php echo "$groupName"; ?></p>
-                        <br>
-                        <br>
-                    </div>
-
-                    <div id="santa-info">
-                        <p>This secret santa group ends on <?php echo "$date"; ?> </p>
-                        <br><br>
-                        <p> The price range is <?php echo "$price"; ?> </p>
-                    </div>
-                </div>
-
-                <?php
-
+                $sql = "SELECT * FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
+                $santaGroup = $db->query($sql);
+                $numInGroup = $santaGroup->rowCount();
+    
+                $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
+                $db->query($sql);
             }
 
         }
