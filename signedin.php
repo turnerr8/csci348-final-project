@@ -27,12 +27,17 @@ include 'nav.php';
 
 
             <?php
-                if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
-                    echo '<p class="message>You are already signed in.</p><br>';
-                    echo '<br><a href="index.php">Home</a><br>';
-                    echo '<a href="signout.php">Sign out</a><br>';
+
+                try
+                {
+                    $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
                 }
-                else { 
+                catch (PDOException $e)
+                {
+                    exit('Error: could not establish database connection');
+                }
+
+                
                     $activity = ""; 
                     if (isset($_REQUEST['activity'])) {
                         $activity = $_REQUEST['activity'];
@@ -50,8 +55,7 @@ include 'nav.php';
                         }
                         else
                         {
-                            $query = "SELECT user_id, user_name, user_level, user_pass FROM users" . 
-                                            " WHERE user_name = '$name';";
+                            $query = "SELECT * FROM turnerr8_final_project.Users WHERE (username LIKE '$name');";
                             $rows = $db->query($query);
                             if($rows->rowCount() == 0) {
                                 echo '<p class="message">Something went wrong while signing in. Please try again. </p>';
@@ -60,7 +64,7 @@ include 'nav.php';
                                 $rowAry = $rows->fetch(PDO::FETCH_ASSOC);
                                 
                                 //if ($pass != $rowAry['user_pass'])  <—- wrong, password in DB is hashed
-                                if((password_verify($pass, $rowAry['user_pass']) == false) ||
+                                if((password_verify($pass, $rowAry['password']) == false) ||
                                     (count($rowAry) == 0) || 
                                     ($rowAry == null))
                                 {
@@ -68,12 +72,13 @@ include 'nav.php';
                                 }
                                 else {
                                     // session_regenerate_id();
-                                    $_SESSION['signed_in'] = true;
-                                    $_SESSION['user_id']    = $rowAry['user_id'];
-                                    $_SESSION['user_name']  = $rowAry['user_name'];
-                                    $_SESSION['user_level'] = $rowAry['user_level'];
+                                   
+
+                                    $_SESSION['fName']=$rowAry['firstName'];
+                                    $_SESSION['lName']=$rowAry['lastName'];
+                                    $_SESSION['userId']=$rowAry['userId'];
                                     
-                                    echo '<p class="message"> Welcome, ' . $_SESSION['user_name'] . '</p>.<br>';
+                                    echo '<p class="message"> Welcome, ' . $_SESSION['fName'] . '</p>.<br>';
                                     echo '<br><a href="page.php">Home</a><br>';
                                     echo '<a href="signout.php">Sign out</a><br>';
                                 }
@@ -81,7 +86,7 @@ include 'nav.php';
                         }       
                         
                     }
-                }
+                //}
 
             ?>
 
