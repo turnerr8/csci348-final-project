@@ -20,24 +20,24 @@ include 'nav.php';
         <!-- TODO: CHANGE FORM ACTION -->
         <form id="sign-up-form" action="verify.php" method="post">
             <fieldset>
-                <br><br>
-                <legend>Your Information</legend>
+                <br>
+                <legend>Sign up</legend>
 
-
-                <label for="fname">First name</label>
+                <p style="font-style: italic;">Your Information</p> <br>
+                <label for="fname">First name</label><br>
                 <input type="text" id="fname" name="fname" placeholder="Enter your First Name..."><br>
 
-                <label for="lname">Last name</label>
+                <label for="lname">Last name</label><br>
                 <input type="text" id="lname" name="lname" placeholder="Enter your Last Name..."><br>
 
-                <label for="email">Email Address</label>
+                <label for="email">Email Address</label><br>
                 <input type="email" id="email" name="email"placeholder="Enter your email address..." pattern="^[a-z0-9][-a-z0-9._]+@([-a-z0-9]+.)+[a-z]{2,5}$" required><br>
 
-                <p>Login Information</p><br><br>
-                <label for="username">Username</label>
+                <p style="font-style: italic;">Login Information</p><br>
+                <label for="username">Username</label><br>
                 <input type="text" id="username" name="username" placeholder="Create username..." required><br>
 
-                <label for="password">Password</label>
+                <label for="password">Password</label><br>
                 <input type="password" id="password" name="password" placeholder="Create password. 4-10 characters or numbers..." pattern="(?=.*[0-9])[0-9a-zA-Z]{4,10}" required><br>
 
                 <label for="password">Confirm your Password</label>

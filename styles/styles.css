@@ -219,7 +219,7 @@ DELETE */
     margin: 50px 30%;
     color: whitesmoke;
     font-size: 1.5em;
-    
+
     
 }
 
@@ -236,7 +236,9 @@ DELETE */
 
 .main-content label {
     text-transform: uppercase;
-    padding: 20px;
+    font-size: .75em;
+
+
 }
 
 #sign-in-form {
@@ -244,7 +246,7 @@ DELETE */
 }
 
 #sign-up-form {
-    display: inline-block;
+   
 }
 
 
