@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 include "head.php";
 include "nav.php";
 require_once "commonvars.php";

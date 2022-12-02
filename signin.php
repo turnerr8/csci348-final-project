@@ -25,14 +25,7 @@ include 'nav.php';
             </div>
             
             <?php
-                if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true)
-                {
-                    echo 'You are already signed in.<br>';
-                    echo '<br><a href="page.php">Home</a><br>';
-                    echo '<a href="signout.php">Sign out</a><br>';
-                }
-                else
-                {
+                
 
                     echo '<form id="sign-in-form" method="post" action="signedin.php">
                         <fieldset>
@@ -48,7 +41,7 @@ include 'nav.php';
                             <button class="main-button" "type="submit" value="Sign in"> Sign In </button>
                         </fieldset>
                         </form>';
-                }
+                //}
 
 
             ?>
