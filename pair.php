@@ -1,20 +1,23 @@
 <?php
 session_start();
+include "head.php";
+include "nav.php";
 include 'commonvars.php';
 $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
-$groupId;
+$groupId = 0;
 
-if($_POST['groupId']){
-    $groupId = $_POST['groupId'];
+if(isset($_SESSION['groupId'])){
+    $groupId = $_SESSION['groupId'];
+    echo $groupId;
 }
 
 
-$sql = "SELECT * FROM SecretSantaGroup JOIN SecretSantaUser ON (SecretSantaGroup.groupId = SecretSantaUser.groupId) WHERE groupId LIKE '$groupId'";
+$sql = "SELECT * FROM SecretSantaGroup JOIN SecretSantaUser ON (SecretSantaGroup.groupId = SecretSantaUser.groupId) WHERE SecretSantaGroup.groupId LIKE $groupId;";
 
 $rows = $db->query($sql);
 
 $numPeople = $rows->rowCount();
-$people [$numPeople];
+$people = [$numPeople];
 $i = 0;
 
 
@@ -30,7 +33,7 @@ foreach($rows as $row){
 
 for($j = 0; $j <= $i; $j++){
     $me = $people[$j];
-    if($j<i) {
+    if($j<$i) {
         $myPerson = $people[$j+1];
     } else {
         $myPerson = $people[0];
