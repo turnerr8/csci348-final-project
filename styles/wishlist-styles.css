@@ -1,37 +1,122 @@
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid red;
-}
+/* message at top */
 
-td {
-    padding: 10px;
-    color: #3A5557;
-    background-color: #0C3633;
-    
-    
-}
-tr {
-    border: 2px solid #3A5557;
+#wishlist-adder {
+    width: 100%;
+    height: 3em;
+    font-size: 1.25em;
+    height: fit-content;
+    text-align: center;
 }
 
 
-td.name , td.itemName , td.itemLink {
-    color: whitesmoke;
-
-    
-}
-a {
-    text-decoration: none;
-    color: whitesmoke;
-}
 
 a.main-button {
     padding: 10px 20px;
+    text-decoration: none;
 }
 a.main-button:hover {
     background-color: #0C3633;
     border: none;
+}
+
+
+/* wishlist header */
+h1 {
+    text-align: center;
+    margin: 1em;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+
+
+/* table */
+
+
+table, th ,td {
+    border: none;
+    border-style: hidden!important;
+    
+
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #0C3633;
+}
+
+th, td {
+    padding: 35px 20px;
+}
+
+th {
+    text-transform: uppercase;
+    background-color: #3A5557;
+    color: whitesmoke;
+}
+
+td {
+    color: whitesmoke;
+    text-align: center  ;
+}
+
+td.delete-buy {
+    width: 45px;
+}
+#wishlist-table {
+    margin: 1em auto;
+    text-justify: center;
+
+
+
+}
+
+
+.editList {
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: #63000c;
+    padding: 10px 20px;
+    
+    border-radius: 5px;
+    
+}
+
+
+.itemLink{
+    color: #63000c;
+    background-color: whitesmoke;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+td.name , td.itemName {
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #3A5557;
+
+}
+
+tr.bought {
+
+    text-decoration: line-through;
+    background-color: #3A5557;
+    opacity: 20%;
+}
+
+/* --------------------------------------------------- */
+
+
+/* 
+
+
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 tr:hover{
@@ -59,24 +144,13 @@ tbody {
     width: 100%;
 }
 
-h1 {
-    text-align: center;
-    margin: 1em;
-    text-transform: uppercase;
-    font-size: 2em;
-}
+
 
 label{
     display: none;
 }
 
-#wishlist-adder {
-    width: 100%;
-    height: 3em;
-    font-size: 1.25em;
-    height: fit-content;
-    text-align: center;
-}
+
 
 #submit {
     font-size: 1em;
@@ -89,4 +163,4 @@ label{
     font-size: 1em;
     margin: .2em;
 
-}
+} */

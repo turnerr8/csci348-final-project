@@ -44,127 +44,148 @@ require 'commonvars.php';
         from this source: https://www.sourcecodester.com/tutorials/php/12333/php-simple-do-list-app.html
     -->
 
-
-
-    <!--ADD AN ITEM TO THE WISHLIST FORM-->
-
-    <section id="Wishlist">
-
-            <!--IF NOT SIGNED IN YOU CAN ONLY VIEW WISHLIST-->
-            <? if(isset($_SESSION['userId'])){
-
-            ?>
-            <form id="wishlist-adder" action="wishlist-add.php" method="POST">
-                <label for="itemName">Item:</label>
-                <input type="text" name="itemName" id="itemName" required placeholder="Item Name">
-                <br>
-
-                <label for="itemLink">Item Link:</label>
-                <input type="text" name="itemLink" id="itemLink"  required placeholder="Item Link">
-                <br>
-
-                <input type="submit" value="add" name="submit" id="submit">
-            </form>
-                <?php
-            } else {
-                ?>
-                    <div id="wishlist-adder">
-                        <p>You need to <a class="main-button" href="signin.php">Sign in</a> or <a class="main-button" href="register.php">Register</a> to add to the wishlist!</p>
-                    </div>
-                <?php
+        <style>
+            .main-content{
+                padding:0;
+                
             }
-            ?>
-
-
-        <!-- CONNECT TO DATABASE-->
-        <?php
-           
             
-            try
-            {
-                $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
-            }
-            catch (PDOException $e)
-            {
-                exit('Error: could not establish database connection');
-            }
-
-            ?>
-
-            <table id="wishlist-table">
-            <tr>
-                <th>Name</th>
-                <th>Item Name</th>
-                <th>Item Link</th>
-                <th>Delete</th>
-                <th>Buy</th>
-            </tr>
-
-<!-- 
-            <tr>
-                <td>Name</td>
-                <td>Item Name</td>
-                <td>Item link</td>
-                <td>Delete</td>
-                <td>Buy</td>
-            </tr> -->
-
-            <?php
-            echo "<h1>Wish List </h1>";
-            $rows = $db->query("SELECT * FROM WishList JOIN Users ON (WishList.userId = Users.userId);");?>
-            <!--ADD ROWS OF WISHLIST-->
+        </style>
+        <div class="main-content">
             
-            <?php
-            //for all rows print the items
-            $lastUserId=0;
-            $rowCounter = 0;
+            <div class="banner">
+                
+            </div>
+                
 
-            foreach($rows as $row){
-                //for all items that are the same userid
 
-                    $name = $row['firstName'] . " " . $row['lastName'];
-                    //echo "<h3 class='name'>$name</h3><br>";
-                    //$rowCounter=0;
+
+
+
+        
+
+
+            <!--ADD AN ITEM TO THE WISHLIST FORM-->
+
+            <section id="Wishlist">
+
+                <!--IF NOT SIGNED IN YOU CAN ONLY VIEW WISHLIST-->
+                <? if(isset($_SESSION['userId'])){
 
                 ?>
-                    
-                    <!--print table-->
-                   
-                    
-                <?php
-                 //end if
-                    //set the user id to the next rows' id
-                    
-                    
+                <form id="wishlist-adder" action="wishlist-add.php" method="POST">
+                    <label for="itemName">Item:</label>
+                    <input type="text" name="itemName" id="itemName" required placeholder="Item Name">
+                    <br>
+
+                    <label for="itemLink">Item Link:</label>
+                    <input type="text" name="itemLink" id="itemLink"  required placeholder="Item Link">
+                    <br>
+
+                    <input type="submit" value="add" name="submit" id="submit">
+                </form>
+                    <?php
+                } else {
                     ?>
+                        <div id="wishlist-adder">
+                            <p>If you would like to add to the wishlist, please signin or register. </p>
+                             <br> 
+                             <p><a class="main-button" href="signin.php">Sign in</a> or <a class="main-button" href="register.php">Register</a></p>
+                        </div>
+                    <?php
+                }
+                ?>
+
+
+            <!-- CONNECT TO DATABASE-->
+            <?php
+            
                 
-                    <tr data-giftId="<?=$row['itemId']?>"
-                        <?php
-                            //test whether isbought is true, if so add bought class to the tr which will grey out row
-                            
-                            if($row['hasBeenBought']==1){
-                                echo "class='bought'";
-                            }
-                        ?>
-                    >
-                        <td class="name"><?=$name?></td>
-                        <td class="itemName"><?=$row['itemName']?></td>
-                        <td class="itemLink"><a href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
-                        <td><a href="wishlist-delete.php?itemId=<?php echo $row['itemId']?>" class="delete">Delete</a></td>
-                        <td><a href="wishlist-buy.php?itemId=<?php echo $row['itemId']?>&boughtBy=<?php echo $userId?>">Buy</a></td>
-                    </tr>
+                try
+                {
+                    $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
+                }
+                catch (PDOException $e)
+                {
+                    exit('Error: could not establish database connection');
+                }
+
+                ?>
+
+                <table id="wishlist-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Item Name</th>
+                    <th>Item Link</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <!-- 
+                <tr>
+                    <td>Name</td>
+                    <td>Item Name</td>
+                    <td>Item link</td>
+                    <td>Delete</td>
+                    <td>Buy</td>
+                </tr> -->
+
                 <?php
-                   
-               
+                echo "<h1>Wish List </h1>";
+                $rows = $db->query("SELECT * FROM WishList JOIN Users ON (WishList.userId = Users.userId);");?>
+                <!--ADD ROWS OF WISHLIST-->
                 
+                <?php
+                //for all rows print the items
+                $lastUserId=0;
+                $rowCounter = 0;
+
+                foreach($rows as $row){
+                    //for all items that are the same userid
+
+                        $name = $row['firstName'] . " " . $row['lastName'];
+                        //echo "<h3 class='name'>$name</h3><br>";
+                        //$rowCounter=0;
+
+                    ?>
+                        
+                        <!--print table-->
+                    
+                        
+                    <?php
+                    //end if
+                        //set the user id to the next rows' id
+                        
+                        
+                        ?>
+                    
+                        <tr data-giftId="<?=$row['itemId']?>"
+                            <?php
+                                //test whether isbought is true, if so add bought class to the tr which will grey out row
+                                
+                                if($row['hasBeenBought']==1){
+                                    echo "class='bought'";
+                                }
+                            ?>
+                        >
+                            <td class="name"><?=$name?></td>
+                            <td class="itemName"><?=$row['itemName']?></td>
+                            <td><a class="itemLink" href= <?=$row['itemLink']?> target="_blank"><?=$row['itemName']?></a></td>
+                            <td class="delete-buy" ><a class="editList" href="wishlist-delete.php?itemId=<?php echo $row['itemId']?>" class="delete">Delete</a></td>
+                            <td class="delete-buy" ><a class="editList" href="wishlist-buy.php?itemId=<?php echo $row['itemId']?>&boughtBy=<?php echo $userId?>">Buy</a></td>
+                        </tr>
+                    <?php
+                    
+                
+                    
 
 
-            }
-            echo "</table>";
+                }
+                echo "</table>";
 
-            
+                    
             ?>
-            
+        </div>
 
             <!--script>
                 /*
