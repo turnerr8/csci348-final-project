@@ -25,8 +25,8 @@ include 'nav.php';
 
             <?php
                 if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
-                    echo '<p>You are already signed in.</p><br>';
-                    echo '<br><a href="page.php">Home</a><br>';
+                    echo '<p class="message>You are already signed in.</p><br>';
+                    echo '<br><a href="index.php">Home</a><br>';
                     echo '<a href="signout.php">Sign out</a><br>';
                 }
                 else { 
@@ -51,7 +51,7 @@ include 'nav.php';
                                             " WHERE user_name = '$name';";
                             $rows = $db->query($query);
                             if($rows->rowCount() == 0) {
-                                echo 'Something went wrong while signing in. Please try again.';
+                                echo '<p class="message">Something went wrong while signing in. Please try again. </p>';
                             }
                             else {
                                 $rowAry = $rows->fetch(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ include 'nav.php';
                                     (count($rowAry) == 0) || 
                                     ($rowAry == null))
                                 {
-                                    echo 'You have supplied a wrong user/password combination. Please try again.';
+                                    echo '<p class="message">You have supplied a wrong user/password combination. Please try again.</p>';
                                 }
                                 else {
                                     // session_regenerate_id();
@@ -70,7 +70,7 @@ include 'nav.php';
                                     $_SESSION['user_name']  = $rowAry['user_name'];
                                     $_SESSION['user_level'] = $rowAry['user_level'];
                                     
-                                    echo 'Welcome, ' . $_SESSION['user_name'] . '.<br>';
+                                    echo '<p class="message"> Welcome, ' . $_SESSION['user_name'] . '</p>.<br>';
                                     echo '<br><a href="page.php">Home</a><br>';
                                     echo '<a href="signout.php">Sign out</a><br>';
                                 }
