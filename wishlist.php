@@ -69,7 +69,7 @@ require 'commonvars.php';
             } else {
                 ?>
                     <div id="wishlist-adder">
-                        <p>You need to <a href="signin.php">Sign in</a> or <a href="register.php">Register</a> to add to the wishlist!</p>
+                        <p>You need to <a class="main-button" href="signin.php">Sign in</a> or <a class="main-button" href="register.php">Register</a> to add to the wishlist!</p>
                     </div>
                 <?php
             }
@@ -93,12 +93,21 @@ require 'commonvars.php';
 
             <table id="wishlist-table">
             <tr>
+                <th>Name</th>
+                <th>Item Name</th>
+                <th>Item Link</th>
+                <th>Delete</th>
+                <th>Buy</th>
+            </tr>
+
+<!-- 
+            <tr>
                 <td>Name</td>
                 <td>Item Name</td>
                 <td>Item link</td>
                 <td>Delete</td>
                 <td>Buy</td>
-            </tr>
+            </tr> -->
 
             <?php
             echo "<h1>Wish List </h1>";
@@ -212,8 +221,9 @@ require 'commonvars.php';
                    
             </!--script-->
         </section>
-        <?php
+        
+    </body>
+    <?php
         require "footer.php";
         ?>
-    </body>
 </html>
