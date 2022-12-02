@@ -25,6 +25,12 @@ table {
 }
 
 
+h1 {
+    margin-top: 40px;
+    color: whitesmoke;
+    text-align: center;
+
+}
 section {
     margin: 2em;
     
@@ -79,11 +85,12 @@ section {
     text-align: left;
     padding: 20px;
     font-style: italic;
-    font-size: 3em;
+    font-size: 3.3em;
     color: whitesmoke;
     font-family: 'Great Vibes';
     padding-top: 50px;
     font-weight: 400;
+    margin-left: 12px;
     
 }
 
@@ -208,6 +215,10 @@ DELETE */
     border-radius: 5px;
     margin: 20px;
 }
+.main-button:hover {
+    background-color: #0C3633;
+    border: 2px solid #3A5557;
+}
 
 /* FORMS */
 .main-content form {
@@ -250,6 +261,16 @@ DELETE */
 }
 
 
+/* SIGNED IN PAGE */
+
+.message {
+    margin: 30px;
+    font-size: 3em;
+    text-align: center;
+}
+
+
+
 
 /* index page  */
 
@@ -287,6 +308,7 @@ DELETE */
     margin: 20px;
     width: 300px;
     height: 100px;
+    
 }
 
 .button1:hover {
@@ -330,7 +352,7 @@ DELETE */
     height: 200px;
     padding-right: 30%;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 #footer-nav li {
@@ -345,6 +367,10 @@ DELETE */
     text-decoration: none;
     color: whitesmoke;
     
+}
+
+#footer-nav a:hover {
+    text-decoration: underline;
 }
 
 

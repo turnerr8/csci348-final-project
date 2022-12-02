@@ -20,7 +20,7 @@ require_once "commonvars.php";
     <div class="main-content" id="index-design">
 
         
-        <h1 class="header-text"> Welcome to Silent Elves</h1>
+        <h1 class="header-text"> Welcome to <i>Silent Elves</i></h1>
         <p class="paragraph-text">We are your one-stop website for creating and sharing Christmas Wishlists as well as Secret Santa Groups </p>
             
         <div id="home-links">

@@ -11,7 +11,7 @@
         </div>
 
         <div id = "float-right">
-            <p style="font-size: 1.2em;">Merry Christmas! <br> We hope you enjoy our Website!</p>
+            <p style="font-size: 1.2em;">Merry Christmas! <br><br> We hope you enjoy our Website!</p>
         </div>
 
 

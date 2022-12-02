@@ -4,4 +4,46 @@ tr.bought {
 
 #Wishlist {
     grid-column: 2/3;
+    margin: 1em auto;
+
+}
+
+#wishlist-table {
+    margin: 1em auto;
+    text-justify: center;
+    width: 50vw;
+}
+
+tbody {
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin: 1em;
+}
+
+label{
+    display: none;
+}
+
+#wishlist-adder {
+    width: 100%;
+    height: 3em;
+    font-size: 1.25em;
+    height: fit-content;
+    text-align: center;
+}
+
+#submit {
+    font-size: 1em;
+    width: 25%;
+
+}
+
+
+#itemName, #itemLink {
+    font-size: 1em;
+    margin: .2em;
+
 }
