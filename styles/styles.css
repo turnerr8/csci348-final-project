@@ -303,9 +303,52 @@ DELETE */
 /* footer */
 .footer {
     background-color: #0C3633;
-    text-align: center;
-    padding: 20px
+    overflow: auto;
+    padding: 20px;
+    
 }
+
+#footer-nav {
+
+    color: whitesmoke;
+
+
+}
+
+#float-left {
+    
+    float: left;
+    width: 50%;
+    height: 200px;
+    padding-left: 30%;
+    text-align: center;
+}
+
+#float-right {
+    float:right;
+    width: 50%;
+    height: 200px;
+    padding-right: 30%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#footer-nav li {
+    list-style: none;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+#footer-nav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: whitesmoke;
+    
+}
+
+
+
 
 /*wishlist*/
 

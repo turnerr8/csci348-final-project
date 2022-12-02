@@ -16,7 +16,7 @@ include 'nav.php';
         <div class="main-content">
 
             <div class="banner">
-                <h1>Sign in</h1>
+                
             </div>
             
             <?php
