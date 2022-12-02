@@ -31,6 +31,7 @@ include 'nav.php';
 
                     echo '<form id="sign-in-form" method="post" action="signedin.php">
                         <fieldset>
+                            <br>
                             <legend>Sign In</legend>
                             <input type="hidden" name="activity" value="signin">
                             <label>Username</label> <br>
@@ -39,7 +40,7 @@ include 'nav.php';
                             <label>Password</label> <br> 
                             <input type="password" name="user_pass" placeholder="Enter your password...">
                             <br>
-                            <input class="main-button" "type="submit" value="Sign in" />
+                            <button class="main-button" "type="submit" value="Sign in"> Sign In </button>
                         </fieldset>
                         </form>';
                 }
