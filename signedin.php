@@ -79,8 +79,7 @@ include 'nav.php';
                                     $_SESSION['userId']=$rowAry['userId'];
                                     
                                     echo '<p class="message"> Welcome, ' . $_SESSION['fName'] . '</p>.<br>';
-                                    echo '<br><a href="page.php">Home</a><br>';
-                                    echo '<a href="signout.php">Sign out</a><br>';
+                                    
                                 }
                             }
                         }       
