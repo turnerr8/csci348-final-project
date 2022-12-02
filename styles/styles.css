@@ -269,6 +269,10 @@ DELETE */
     text-align: center;
 }
 
+p.message {
+    margin-left: 500px;
+    margin-right: 500px;
+}
 
 
 /* index page  */
