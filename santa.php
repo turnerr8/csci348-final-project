@@ -1,10 +1,10 @@
 <?php
+session_start ();
 include "head.php";
 include "nav.php";
 require_once "commonvars.php";
 ?>
 
-<!-- TODO: WE NEED TO GET THE USER'S ID SO THAT WE CAN CHECK WHETHER IT EXISTS IN THE SECRET SANTA GROUP TABLE AS AN ORGANIZER -->
 <!-- TODO: WE NEED TO MAKE IT SO THAT IF A USER CLICKS 'CREATE' THE JOIN OPTION HIDES -->
 <body>
 
@@ -13,30 +13,37 @@ require_once "commonvars.php";
     <button type="button" onClick="createGroup(); this.style.display = 'none'">CREATE</button>
     <?php 
         $db = new PDO($databaseConnection, $databaseUname, $databasePassword);
-        // NEED TO STORE ORGANIZER ID IN A VARIABLE
-        $sql = "SELECT COUNT(organizerId) FROM SecretSantaGroup";
-        $doesOrganizerExist = $db->query($sql);
-        if($doesOrganizerExist > 0) {
-            echo "You cannot organize two Secret Santa events.";
-        }
-        else {
-        ?>
-            <div id="createButton" style="display:none">
-                <form action="createLanding.php" method="post">
-                    <label for="groupName">Group Name:</label>
-                    <input type="text" id="groupName" name="groupName"><br><br>
-
-                    <label for="priceRange">Price Range ($1-$100):</label>
-                    <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
-
-                    <label for="date">Date of Secret Santa Event:</label>
-                    <input type="date" id="date" name="date" min="1" max="100"><br><br>
-                    
-                    <button type="submit" name="submit">Create Group</button>
-                </form>
-            </div>  
-        <?php }
     ?>
+    <div id="createButton" style="display:none">
+        <?php
+            if(isset($_SESSION['userId'])){
+                $organizerId = $_SESSION['userId'];
+            }
+
+            $sql = "SELECT COUNT($organizerId) FROM SecretSantaGroup";
+            $stmt = $db->query($sql);
+            $doesOrganizerExist = $stmt->rowCount();
+            if($doesOrganizerExist > 0) {
+                echo "You cannot organize two Secret Santa events.";
+            }
+            else {
+        ?>
+            <form action="createLanding.php" method="post">
+                <label for="groupName">Group Name:</label>
+                <input type="text" id="groupName" name="groupName"><br><br>
+
+                <label for="priceRange">Price Range ($1-$100):</label>
+                <input type="number" id="priceRange" name="priceRange" min="1" max="100"><br><br>
+
+                <label for="date">Date of Secret Santa Event:</label>
+                <input type="date" id="date" name="date" min="1" max="100"><br><br>
+                
+                <button type="submit" name="submit">Create Group</button>
+            </form>
+        <?php 
+                } 
+        ?>
+    </div>  
 
     <!-- 2. Button to Join -->
     <button type="button" onClick="joinGroup(); this.style.display = 'none'">JOIN</button>
@@ -49,14 +56,6 @@ require_once "commonvars.php";
             <button type="submit" name="submit">Enter Group</button>
         </form>
     </div>
-
-
-<!-- 
-    TODO:
-            - PROMPT USER TO ENTER GROUP ID
-            - CHECK DATABASE IF GROUP ID EXISTS
-            - IF SO, REDIRECT TO THE LANDING PAGE -->
-
 
     <script>
         function createGroup() {
