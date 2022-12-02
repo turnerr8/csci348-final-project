@@ -111,7 +111,7 @@ tr:hover {
 
 tr.bought {
 
-    text-decoration: line-through;
+    
     background-color: #3A5557;
     opacity: 20%;
 }
