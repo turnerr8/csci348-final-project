@@ -14,7 +14,7 @@ include 'nav.php';
     <div class="main-content">
         
             <div class="banner">
-                <h1>Sign Up</h1>
+                
             </div>
 
         <!-- TODO: CHANGE FORM ACTION -->
