@@ -51,6 +51,7 @@ Which person the user should buy for -->
                         $groupName = $groupID["groupName"];
                         $price= $groupID["priceRange"];
                         $date = $groupID["eventDate"];
+                        $groupGenerated =  $groupID['`generated`'];
                     }
 
                     ?>
@@ -70,6 +71,23 @@ Which person the user should buy for -->
                             <br><br>
                             <p> The price range is <?php echo "$price"; ?> </p>
                         </div>
+                    <?php
+                   if($groupGenerated==1){
+
+                    $myPerson;
+
+                    $getMyPerson = "SELECT * FROM SecretSantaUsers WHERE userId = $userID";
+                    $row = $db->query($getMyPerson);
+                    foreach($row as $r){
+                        $myPerson = $r['whoIHave'];
+
+                    }
+                    echo "<p> my person: $myPerson";
+
+                   }
+                    ?>
+
+
                     </div>
 
                     <?php
@@ -78,9 +96,7 @@ Which person the user should buy for -->
             }
             else{
                 //secret santa pairing
-                $sql = "SELECT * FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
-                $santaGroup = $db->query($sql);
-                $numInGroup = $santaGroup->rowCount();
+               
     
                 //inserting into database
                 $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
