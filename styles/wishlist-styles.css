@@ -80,6 +80,10 @@ td.delete-buy {
     border-radius: 5px;
     
 }
+.editList:hover {
+    background-color: whitesmoke;
+    color: #63000c;
+}
 
 
 .itemLink{
@@ -88,6 +92,11 @@ td.delete-buy {
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
+}
+.itemLink:hover {
+    background-color: #0C3633;
+    color: whitesmoke;
+
 }
 
 
@@ -105,6 +114,22 @@ tr.bought {
     text-decoration: line-through;
     background-color: #3A5557;
     opacity: 20%;
+}
+
+
+#submit {
+    font-size: 1em;
+    width: 25%;
+
+}
+
+label{
+    display: none;
+}
+
+#wishlist-adder {
+    width: 70%;
+    margin: 1em auto;
 }
 
 /* --------------------------------------------------- */
@@ -146,17 +171,11 @@ tbody {
 
 
 
-label{
-    display: none;
-}
 
 
 
-#submit {
-    font-size: 1em;
-    width: 25%;
 
-}
+
 
 
 #itemName, #itemLink {
