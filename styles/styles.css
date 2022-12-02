@@ -329,6 +329,33 @@ DELETE */
 
 
 
+/* createlanding */
+
+#dashboard {
+text-align: center;
+
+
+}
+
+.dashboard-element {
+padding: 20px;
+background-color: #0C3633;
+margin: 10px auto;
+width: 40%;
+height: auto;
+color: whitesmoke;
+font-size: 2em;
+border-radius: 5px;
+}
+
+#code {
+    color: whitesmoke;
+    background-color: #63000c;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
 
 /* footer */
 .footer {
