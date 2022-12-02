@@ -60,7 +60,7 @@ require 'commonvars.php';
                 <br>
 
                 <label for="itemLink">Item Link:</label>
-                <input type="text" name="itemLink" id="itemLink" placeholder="Item Link">
+                <input type="text" name="itemLink" id="itemLink"  required placeholder="Item Link">
                 <br>
 
                 <input type="submit" value="add" name="submit" id="submit">
