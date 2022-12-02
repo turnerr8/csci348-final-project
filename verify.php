@@ -11,7 +11,7 @@ include 'nav.php';
   <style>
           .main-content{
               padding:0;
-              height: 50em;
+              height: 43.2em;
           }
   </style>
 
@@ -73,7 +73,7 @@ include 'nav.php';
         $_SESSION['fName']=$fname;
         $_SESSION['lName']=$lname;
         $_SESSION['userId']=$userId;
-        echo $userId;
+        
 
       }
     }
