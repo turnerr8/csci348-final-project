@@ -28,7 +28,7 @@ Which person the user should buy for -->
                 exit('Error: could not establish database connection');
             }
 
-            if(isset($_SESSION['userId'])){
+            if(isset($_SESSION['groupId'])){
                 //checks to see if that groupID user entered exits
                 $sql = "SELECT groupId FROM SecretSantaGroup WHERE groupId LIKE '$groupID';";
                 $doesGroupIDExist = $db->query($sql);
@@ -85,6 +85,12 @@ Which person the user should buy for -->
                 //inserting into database
                 $sql = "INSERT INTO turnerr8_final_project.SecretSantaUser (groupId, isReady, userId, whoHasMe, whoIHave) VALUES ('$groupID', '1', '$userID', 'NULL', 'NULL');";
                 $db->query($sql);
+
+                $_SESSION['groupId']=$groupID;
+
+                echo "You have joined a group to view it click the join button again";
+
+
             }
 
         }
