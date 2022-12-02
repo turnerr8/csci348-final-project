@@ -74,7 +74,7 @@ require 'commonvars.php';
 
                 ?>
                 <form id="wishlist-adder" action="wishlist-add.php" method="POST">
-                    <label for="itemName">Item:</label>
+                    <label for="itemName">Item:</label> 
                     <input type="text" name="itemName" id="itemName" required placeholder="Item Name">
                     <br>
 
@@ -82,7 +82,7 @@ require 'commonvars.php';
                     <input type="text" name="itemLink" id="itemLink"  required placeholder="Item Link">
                     <br>
 
-                    <input type="submit" value="add" name="submit" id="submit">
+                    <input class="main-button"type="submit" value="add" name="submit" id="submit">
                 </form>
                     <?php
                 } else {
