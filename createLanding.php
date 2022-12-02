@@ -26,7 +26,9 @@ require_once "commonvars.php";
             $priceRange = $_REQUEST["priceRange"];
             $date = $_REQUEST["date"];
             $groupId = getCode();
-            $organizerId = $_SESSION['userId'];
+            if(isset($_SESSION['userId'])){
+                $organizerId = $_SESSION['userId'];
+            }
 
             echo $groupName . "<br>";
             echo $priceRange . "<br>";
@@ -41,16 +43,9 @@ require_once "commonvars.php";
             {
                 exit('Error: could not establish database connection');
             }
-            // TODO: WE NEED TO GRAB organizerId AND STORE IT IN VARIABLE SO WE CAN INSERT IT INTO DATABASE
             
-            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (eventDate, generated, groupId, groupName, organizerId, priceRange) VALUES ('$date', 1, '$groupId', '$groupName', '$organizerId', '$priceRange');";
-            // $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupId, groupName, eventDate, priceRange, organizerId, generated) VALUES ('$groupId','$groupName', '$date', '$priceRange', '$organizerId', '1');";
-            // $statement = $db->prepare($sql);
-            // $statement->execute($sql);
-            
-            $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupId, groupName, eventDate, priceRange, organizerId, generated) VALUES (?, ?, ?, ?, ?, ?)";
-            $statement = $db->prepare($sql);
-            $statement->execute([$groupId, $groupName, $date, $priceRange, $organizerId, '1']);
+            $sql = "INSERT INTO turnerr8_final_project.SecretSantaGroup (groupId, groupName, eventDate, priceRange, organizerId, `generated`) VALUES ('$groupId','$groupName', '$date', '$priceRange', '$organizerId', '1');";
+            $db->query($sql);
         }
     ?>
 </body>
